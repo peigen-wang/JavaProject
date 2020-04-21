@@ -16,6 +16,15 @@ public class UserMapperTest {
             mapper.insert(userModel1);
             return null;
         });
+        Map<String, Object> map = new HashMap<>();
+        map.put("id",10);
+        UserModel u=  UserUtil.callMapper(UserMapper.class,mapper->{
+            List<UserModel> userModelList=  mapper.getModelList(map);
+            return userModelList.get(0);
+        });
+        log.info("结果:{}", u);
+
+
         log.info("插入结果：{}", this.getModelById(userModel1.getId()));
         log.info("---------------------");
         UserModel userModel2 = UserModel.builder().name("根").age(30).salary(50000.00).build();

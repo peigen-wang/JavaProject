@@ -2,12 +2,11 @@ package com.javacode2020.mybatis.chat01;
 
 import lombok.*;
 
-@Getter
-@Setter
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@ToString
+@Data
 public class UserModel {
     private Long id;
     private String name;
