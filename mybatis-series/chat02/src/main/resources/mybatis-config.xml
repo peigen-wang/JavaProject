@@ -16,6 +16,11 @@
         </environment>
     </environments>
     <mappers>
-        <mapper resource="mapper/UserMapper.xml"></mapper>
+        <!--单个配置到指定接口-->
+        <!-- <mapper resource="resource/com/javacode2020/chat02/mapper/UserMapper.xml"></mapper>-->
+        <!--单个配置到指定接口-->
+        <!--  <mapper class="com.javacode2020.chat02.UserMapper"></mapper>-->
+        <!--扫描全局配置 此方法最方便-->
+        <package name="com.javacode2020.chat02.mapper"/>
     </mappers>
 </configuration>

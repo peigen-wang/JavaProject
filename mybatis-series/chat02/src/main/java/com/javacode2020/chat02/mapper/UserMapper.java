@@ -1,4 +1,6 @@
-package com.javacode2020.chat02;
+package com.javacode2020.chat02.mapper;
+
+import com.javacode2020.chat02.UserModel;
 
 import java.util.List;
 

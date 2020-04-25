@@ -1,5 +1,6 @@
 package com.javacode2020.chat02;
 
+import com.javacode2020.chat02.mapper.UserMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
