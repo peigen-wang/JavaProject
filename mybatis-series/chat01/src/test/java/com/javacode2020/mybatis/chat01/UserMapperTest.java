@@ -16,6 +16,7 @@ public class UserMapperTest {
             mapper.insert(userModel1);
             return null;
         });
+
         Map<String, Object> map = new HashMap<>();
         map.put("id",10);
         UserModel u=  UserUtil.callMapper(UserMapper.class,mapper->{

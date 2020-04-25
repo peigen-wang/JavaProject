@@ -10,8 +10,8 @@
         <property name="username" value="peigen"/>
         <property name="password" value="peigen123456"/>
     </properties>
-    <environments default="development">
-        <environment id="development">
+    <environments default="chat01">
+        <environment id="chat01">
             <transactionManager type="JDBC"></transactionManager>
             <dataSource type="POOLED">
                 <property name="driver" value="${driver}"/>
