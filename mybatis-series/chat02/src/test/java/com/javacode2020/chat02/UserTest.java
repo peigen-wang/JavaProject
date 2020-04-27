@@ -2,16 +2,19 @@ package com.javacode2020.chat02;
 
 import com.javacode2020.chat02.mapper.UserMapper;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.ibatis.executor.result.DefaultResultContext;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.Before;
 import org.junit.Test;
+import org.omg.CORBA.PUBLIC_MEMBER;
 
 import javax.annotation.Resource;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
 
 @Slf4j
@@ -52,6 +55,63 @@ public class UserTest {
             log.info("插入影响行数：{}",result);
             //sqlSession.commit();
         }
+    }
+
+    /**
+     * 单个参数
+     */
+    @Test
+    public void getByName() {
+        try (SqlSession sqlSession = this.sqlSessionFactory.openSession(true);) {
+            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+            UserModel userModel = userMapper.getByName("peigen");
+            log.info("{}", userModel);
+        }
+    }
+
+    /**
+     * 实体值
+     */
+    @Test
+    public void getListByUserFindDto(){
+        try (SqlSession sqlSession = this.sqlSessionFactory.openSession(true);) {
+            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+            UserFindDto userFindDto = UserFindDto.builder().userId(20L).userName("peigen").build();
+            List<UserModel> userModelList = userMapper.getListByUserFindDto(userFindDto);
+            userModelList.forEach(item -> {
+                log.info("{}", item);
+            });
+        }
+    }
+
+    /**
+     * 多个自定义参数
+     */
+    @Test
+    public void getByIdOrName(){
+        try (SqlSession sqlSession = this.sqlSessionFactory.openSession(true);){
+            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+            UserModel userModel = userMapper.getByIdOrName(20L,"peigen");
+            log.info("{}", userModel);
+        }
+    }
+
+    /**
+     * ResultHandler 处理
+     */
+    @Test
+    public void  getList() {
+        try (SqlSession sqlSession = this.sqlSessionFactory.openSession(true);){
+            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+            userMapper.getList(resultContext -> {
+                DefaultResultContext<UserModel> defaultResultContext = ( DefaultResultContext<UserModel>)resultContext;
+                log.info("{}", defaultResultContext.getResultObject());
+                if(defaultResultContext.getResultCount()==10){
+                    defaultResultContext.stop();
+                }
+            });
+        }
+
     }
 
 }
