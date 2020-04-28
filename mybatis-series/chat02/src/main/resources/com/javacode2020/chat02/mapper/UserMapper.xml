@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.javacode2020.chat02.mapper.UserMapper">
+
+    <insert id="insertUser" parameterType="com.javacode2020.chat02.UserModel">
+    <![CDATA[
+    INSERT INTO user (name,age,salary) VALUES (#{name},#{age},#{salary})
+     ]]>
+    </insert>
+
+    <select id="getUserList" resultType="com.javacode2020.chat02.UserModel">
+    <![CDATA[
+    SELECT * FROM user
+    ]]>
+</select>
+    <select id="getByName" resultType="com.javacode2020.chat02.UserModel">
+        <![CDATA[ SELECT * FROM user WHERE name =#{value} LIMIT 1
+ ]]>
+    </select>
+    <select id="getByMap" resultType="com.javacode2020.chat02.UserModel">
+        <![CDATA[
+            SELECT * FROM user WHERE id=#{id} OR name=#{name}
+        ]]>
+
+    </select>
+    <select id="getListByUserFindDto" parameterType="com.javacode2020.chat02.UserFindDto" resultType="com.javacode2020.chat02.UserModel">
+        <![CDATA[
+        SELECT * FROM user WHERE id=#{userId} OR name=#{userName}
+  ]]>
+    </select>
+    <select id="getByIdOrName" resultType="com.javacode2020.chat02.UserModel">
+        <![CDATA[
+SELECT * FROM user WHERE id=#{userId} OR name=#{userName} LIMIT 1
+]]>
+    </select>
+    <select id="getList" resultType="com.javacode2020.chat02.UserModel">
+         <![CDATA[
+    SELECT * FROM user
+    ]]>
+    </select>
+    <select id="getListByIds" resultType="com.javacode2020.chat02.UserModel" parameterType="list">
+        SELECT * FROM user WHERE id IN
+        <foreach collection="list" item="item" index="index" open="(" close=")" separator=",">
+            #{item}
+        </foreach>
+    </select>
+</mapper>
