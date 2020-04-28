@@ -14,6 +14,8 @@ import org.omg.CORBA.PUBLIC_MEMBER;
 import javax.annotation.Resource;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -111,7 +113,18 @@ public class UserTest {
                 }
             });
         }
+    }
 
+    @Test
+    public void getListByIds(){
+        try (SqlSession sqlSession = this.sqlSessionFactory.openSession(true)){
+            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+            List<Long> ids = Arrays.asList(1L, 3L,10L,20L,21L);
+            List<UserModel> userModelList = userMapper.getListByIds(ids);
+            userModelList.forEach(item -> {
+                log.info("{}", item);
+            });
+        }
     }
 
 }

@@ -24,4 +24,6 @@ public interface UserMapper {
     UserModel  getByIdOrName(@Param("userId") Long id,@Param("userName") String name);
 
     void getList(ResultHandler<UserModel> resultHandler);
+
+    List<UserModel> getListByIds(List<Long> ids);
 }

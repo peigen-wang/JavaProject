@@ -9,6 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="chat02" />
         <module name="chat01" />
+        <module name="chat03" />
       </profile>
     </annotationProcessing>
   </component>
