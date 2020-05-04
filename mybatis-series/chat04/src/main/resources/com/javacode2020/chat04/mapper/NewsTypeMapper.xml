@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.javacode2020.chat04.mapper.NewsTypeMapper">
+
+
+    <resultMap id="getByIdMap1" type="com.javacode2020.chat04.NewsTypeModel">
+        <id column="typeId" property="typeId"></id>
+        <result column="typeCode" property="typeCode"></result>
+        <result column="typeName" property="typeName"></result>
+        <collection property="newsModelList" ofType="com.javacode2020.chat04.NewsModel">
+            <id column="id" property="id"></id>
+            <result property="typeCode" column="typeCode"></result>
+            <result property="subTitle" column="subTitle"></result>
+            <result property="description" column="description"></result>
+            <result property="typeId" column="typeId"></result>
+            <result property="title" column="title"></result>
+            <result property="imageUrl" column="imageUrl"></result>
+        </collection>
+    </resultMap>
+
+    <select id="getById" resultMap="getByIdMap1">
+        <![CDATA[
+SELECT a.typeId,a.typeCode,a.typeName
+,b.id,b.typeCode,b.subTitle,b.description,b.typeId,b.title
+,b.imageUrl
+ from newstype a, news b
+ where a.typeId = b.typeId
+ AND a.typeId=#{value}
+
+]]>
+
+    </select>
+
+    <select id="getById2" resultMap="getByIdMap1">
+        <![CDATA[
+select  a.typeId,a.typeCode,a.typeName
+,b.id,b.typeCode,b.subTitle,b.description,b.typeId,b.title
+,b.imageUrl from newstype a left join news b on a.typeId = b.typeId where a.typeId=#{value}
+
+        ]]>
+    </select>
+</mapper>

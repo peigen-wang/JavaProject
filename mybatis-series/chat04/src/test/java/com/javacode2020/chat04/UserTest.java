@@ -1,5 +1,6 @@
 package com.javacode2020.chat04;
 
+import com.javacode2020.chat04.mapper.NewsTypeMapper;
 import com.javacode2020.chat04.mapper.UserMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.io.Resources;
@@ -32,4 +33,22 @@ public class UserTest {
         }
     }
 
+    @Test
+    public void getById1(){
+        try (SqlSession sqlSession = this.sqlSessionFactory.openSession(true);) {
+            NewsTypeMapper mapper = sqlSession.getMapper(NewsTypeMapper.class);
+            NewsTypeModel newsTypeModel = mapper.getById(2);
+            log.info("{}", newsTypeModel);
+        }
+    }
+
+
+    @Test
+    public void getById2(){
+        try (SqlSession sqlSession = this.sqlSessionFactory.openSession(true);) {
+            NewsTypeMapper mapper = sqlSession.getMapper(NewsTypeMapper.class);
+            NewsTypeModel newsTypeModel = mapper.getById2(3);
+            log.info("{}", newsTypeModel);
+        }
+    }
 }
