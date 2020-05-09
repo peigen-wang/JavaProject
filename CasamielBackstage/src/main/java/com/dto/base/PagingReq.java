@@ -9,13 +9,13 @@ public class PagingReq extends BaseModelReq {
      * 当前页索引
      */
     @ApiModelProperty("当前页索引")
-    @Min(value = 1,message = "索引不能小于0")
+    @Min(value = 1, message = "索引不能小于0")
     private int pageIndex;
     /**
      * 每页大小
      */
     @ApiModelProperty("每页大小")
-    @Min(value = 1,message = "每页大小不能小于0")
+    @Min(value = 1, message = "每页大小不能小于0")
     private int pageSize;
 
     public int getPageIndex() {
@@ -33,7 +33,6 @@ public class PagingReq extends BaseModelReq {
     public void setPageSize(int pageSize) {
         this.pageSize = pageSize;
     }
-
 
 
 }

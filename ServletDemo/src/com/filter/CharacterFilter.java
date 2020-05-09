@@ -8,8 +8,8 @@ import java.io.IOException;
 /**
  * @author peigen
  */
-@WebFilter(filterName = "CharacterFilter",urlPatterns = "*",initParams ={
-        @WebInitParam(name = "encoding",value = "UTF-8")
+@WebFilter(filterName = "CharacterFilter", urlPatterns = "*", initParams = {
+        @WebInitParam(name = "encoding", value = "UTF-8")
 })
 public class CharacterFilter implements Filter {
     String encoding = null;
@@ -23,7 +23,7 @@ public class CharacterFilter implements Filter {
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws ServletException, IOException {
         if (encoding != null) {
             req.setCharacterEncoding(encoding);
-            resp.setContentType("text/html;charset="+encoding+";pageEncoding="+encoding);
+            resp.setContentType("text/html;charset=" + encoding + ";pageEncoding=" + encoding);
         }
 
         chain.doFilter(req, resp);

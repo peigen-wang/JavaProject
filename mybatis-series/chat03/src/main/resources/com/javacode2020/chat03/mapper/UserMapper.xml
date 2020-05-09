@@ -5,7 +5,7 @@
 
 
     <insert id="insertUser" parameterType="com.javacode2020.chat03.UserModel">
-<![CDATA[
+        <![CDATA[
 
         INSERT INTO user (name,age,salary) VALUES (#{name},#{age},#{salary})
 
@@ -32,7 +32,7 @@
     </update>
     <delete id="deleteUser" parameterType="java.lang.Long">
 
- <![CDATA[
+        <![CDATA[
 
                 DELETE FROM user WHERE id = #{id}
 

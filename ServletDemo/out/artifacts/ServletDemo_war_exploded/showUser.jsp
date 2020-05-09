@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 
-<%@ page contentType="text/html;charset=UTF-8"  pageEncoding="UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" language="java" %>
 <%@ page import="java.util.*" %>
 <%@ page import="com.listener.*" %>
 <%@ page import="com.listener.UserInfoList" %>
@@ -17,7 +17,7 @@
     MyContentListener ml = new MyContentListener();
     String name = request.getParameter("user");
     ml.setUser(name);
-    session.setAttribute("list",list);
+    session.setAttribute("list", list);
     list.addUserInfo(ml.getUser());
     session.setMaxInactiveInterval(10);
 %>
@@ -26,11 +26,11 @@
     <title>监听在线人数</title>
 </head>
 <body>
-    <textarea rows="8" cols="20"></textarea>
+<textarea rows="8" cols="20"></textarea>
 <%
-    Vector vector= list.getlist();
-    if(vector!=null && vector.size()>0){
-        for (int i=0;i<vector.size();i++){
+    Vector vector = list.getlist();
+    if (vector != null && vector.size() > 0) {
+        for (int i = 0; i < vector.size(); i++) {
             System.out.println(vector.elementAt(i));
         }
     }

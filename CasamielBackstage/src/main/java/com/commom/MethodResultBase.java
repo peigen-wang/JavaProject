@@ -15,25 +15,25 @@ public class MethodResultBase {
     /**
      * 无参构造方法默认成功
      */
-    public MethodResultBase()
-    {
+    public MethodResultBase() {
         setResultNo(ErrorCodeEnum.Success.getCode());
     }
 
     /**
      * 请传入错误码
+     *
      * @param status
      */
-    public MethodResultBase(ErrorCodeEnum status){
+    public MethodResultBase(ErrorCodeEnum status) {
         setResultNo(status.getCode());
     }
 
-    public MethodResultBase(MethodResultBase methodResultBase){
+    public MethodResultBase(MethodResultBase methodResultBase) {
         this.resultNo = methodResultBase.resultNo;
     }
 
-    public boolean isSuccess(){
-        return this.getResultNo()==ErrorCodeEnum.Success.getCode();
+    public boolean isSuccess() {
+        return this.getResultNo() == ErrorCodeEnum.Success.getCode();
     }
 
     public int getResultNo() {

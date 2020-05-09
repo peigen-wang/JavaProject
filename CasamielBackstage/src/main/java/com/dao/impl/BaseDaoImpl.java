@@ -31,8 +31,7 @@ public abstract class BaseDaoImpl<T> implements BaseDao<T> {
     @Qualifier("sessionFactory")
     private SessionFactory sessionFactory;
 
-    public Session getSession()
-    {
+    public Session getSession() {
         return sessionFactory.getCurrentSession();
     }
 
@@ -77,13 +76,13 @@ public abstract class BaseDaoImpl<T> implements BaseDao<T> {
 
     @Override
     public T get(Serializable id) {
-        return this.getSession().get(clazz,id);
+        return this.getSession().get(clazz, id);
     }
 
     @Override
     public List<T> getList(String hql, Object... params) {
         Query query = this.getSession().createQuery(hql);
-        if(params!=null && params.length>0) {
+        if (params != null && params.length > 0) {
             for (int i = 0; i < params.length; i++) {
                 query.setParameter(i, params[i]);
             }
@@ -93,27 +92,27 @@ public abstract class BaseDaoImpl<T> implements BaseDao<T> {
 
     @Override
     public List<T> queryPage(String hql, int pageIndex, int pageSize, Object... params) {
-        if(pageIndex<1){
-            pageIndex=1;
+        if (pageIndex < 1) {
+            pageIndex = 1;
         }
         Query query = this.getSession().createQuery(hql);
-        if(params!=null && params.length>0) {
+        if (params != null && params.length > 0) {
             for (int i = 0; i < params.length; i++) {
                 query.setParameter(i, params[i]);
             }
         }
-       return query.setFirstResult((pageIndex-1)*pageSize).setMaxResults(pageSize).list();
+        return query.setFirstResult((pageIndex - 1) * pageSize).setMaxResults(pageSize).list();
     }
 
     @Override
     public int Count(String hql, Object... params) {
         int index = hql.toUpperCase().indexOf("FROM");
-        Query query = this.getSession().createQuery("select count(*) "+hql.substring(index));
-        if(params!=null && params.length>0) {
+        Query query = this.getSession().createQuery("select count(*) " + hql.substring(index));
+        if (params != null && params.length > 0) {
             for (int i = 0; i < params.length; i++) {
                 query.setParameter(i, params[i]);
             }
         }
-        return (int)query.uniqueResult();
+        return (int) query.uniqueResult();
     }
 }

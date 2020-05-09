@@ -6,6 +6,6 @@
         </encoder>
     </appender>
     <logger name="com.javacode2020" lever="debug" additivity="false">
-        <appender-ref ref="STDOUT" />
+        <appender-ref ref="STDOUT"/>
     </logger>
 </configuration>

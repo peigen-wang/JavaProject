@@ -6,7 +6,7 @@
 
     <select id="getById" resultType="com.javacode2020.chat04.UserModel">
 
-         <![CDATA[
+        <![CDATA[
     SELECT a.id,a.name,a.age,a.salary FROM user a WHERE a.id = #{value}
     ]]>
 

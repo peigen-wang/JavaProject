@@ -12,10 +12,11 @@ import javax.servlet.http.*;
 public class MyContentListener implements HttpSessionBindingListener {
 
     private String user;
-    private UserInfoList container =UserInfoList.getInstance();
+    private UserInfoList container = UserInfoList.getInstance();
+
     // Public constructor is required by servlet spec
     public MyContentListener() {
-        user="";
+        user = "";
     }
 
 
@@ -29,12 +30,12 @@ public class MyContentListener implements HttpSessionBindingListener {
 
     @Override
     public void valueBound(HttpSessionBindingEvent event) {
-        System.out.println("上线"+user);
+        System.out.println("上线" + user);
     }
 
     @Override
     public void valueUnbound(HttpSessionBindingEvent event) {
-        System.out.println("下线"+user);
+        System.out.println("下线" + user);
         container.removeUserInfo(user);
     }
 }

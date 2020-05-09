@@ -20,29 +20,29 @@ public class MethodResultFull<T> extends MethodResultBase {
         this.content = content;
     }
 
-    public MethodResultFull(){
+    public MethodResultFull() {
         super();
     }
 
-    public MethodResultFull(ErrorCodeEnum codeEnum){
+    public MethodResultFull(ErrorCodeEnum codeEnum) {
         super(codeEnum);
     }
 
-    public MethodResultFull(MethodResultBase methodResultBase){
+    public MethodResultFull(MethodResultBase methodResultBase) {
         super(methodResultBase);
     }
 
-    public MethodResultFull(T defaultValue){
+    public MethodResultFull(T defaultValue) {
         super();
         setContent(defaultValue);
     }
 
-    public MethodResultFull(ErrorCodeEnum codeEnum,T defaultValue){
+    public MethodResultFull(ErrorCodeEnum codeEnum, T defaultValue) {
         setContent(defaultValue);
     }
 
     @Override
     public boolean isSuccess() {
-        return super.isSuccess() && this.content!=null;
+        return super.isSuccess() && this.content != null;
     }
 }

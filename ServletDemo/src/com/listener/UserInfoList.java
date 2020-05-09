@@ -23,13 +23,12 @@ public class UserInfoList {
         }
     }
 
-    public Vector getlist(){
-        return  vector;
+    public Vector getlist() {
+        return vector;
     }
 
-    public void  removeUserInfo(String user){
-        if(null!=user)
-        {
+    public void removeUserInfo(String user) {
+        if (null != user) {
             vector.removeElement(user);
         }
     }

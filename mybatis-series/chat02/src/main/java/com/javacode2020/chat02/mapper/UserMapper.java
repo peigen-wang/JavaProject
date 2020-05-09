@@ -17,11 +17,11 @@ public interface UserMapper {
 
     UserModel getByName(String name);
 
-    List<UserModel> getByMap(Map<String,Object> map);
+    List<UserModel> getByMap(Map<String, Object> map);
 
     List<UserModel> getListByUserFindDto(UserFindDto userFindDto);
 
-    UserModel  getByIdOrName(@Param("userId") Long id,@Param("userName") String name);
+    UserModel getByIdOrName(@Param("userId") Long id, @Param("userName") String name);
 
     void getList(ResultHandler<UserModel> resultHandler);
 

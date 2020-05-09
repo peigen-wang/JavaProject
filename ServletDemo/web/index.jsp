@@ -7,20 +7,20 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-  <head>
+<head>
     <title>hello</title>
-  </head>
-  <body>
-    <h2>
-      欢迎光临，<br>
-      您是本站的第${count}位访客！
-    </h2>
+</head>
+<body>
+<h2>
+    欢迎光临，<br>
+    您是本站的第${count}位访客！
+</h2>
 
-    <form method="post" action="upload" enctype="multipart/form-data">
-      选择一个文件:
-      <input type="file" name="file1" />
-      <br/><br/>
-      <input type="submit" value="上传" />
-    </form>
-  </body>
+<form method="post" action="upload" enctype="multipart/form-data">
+    选择一个文件:
+    <input type="file" name="file1"/>
+    <br/><br/>
+    <input type="submit" value="上传"/>
+</form>
+</body>
 </html>

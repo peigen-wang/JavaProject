@@ -7,11 +7,11 @@ import java.util.List;
  */
 public class PagingResult<T> extends MethodResultBase {
 
-    public PagingResult(){
+    public PagingResult() {
 
     }
 
-    public PagingResult(int pageIndex,int pageSize,int total,List<T> list){
+    public PagingResult(int pageIndex, int pageSize, int total, List<T> list) {
         setPageIndex(pageIndex);
         setPageSize(pageSize);
         setTotal(total);

@@ -21,7 +21,7 @@ import javax.validation.Valid;
 public class AccountController {
 
     @Autowired
-    private  AccountService accountService;
+    private AccountService accountService;
 
     @ApiOperation(value = "测试接口")
     @RequestMapping(value = "/test", method = RequestMethod.POST)
@@ -42,31 +42,31 @@ public class AccountController {
 
 
     @ApiOperation("测试全局验证RequestBody 异常捕获")
-    @RequestMapping(value = "/postBaseModelReqByJson",method = RequestMethod.POST)
+    @RequestMapping(value = "/postBaseModelReqByJson", method = RequestMethod.POST)
     @ResponseBody
-    public BaseModelRsp postBaseModelReqByJson(@Valid @RequestBody BaseModelReq req){
-        return  new BaseModelRsp();
+    public BaseModelRsp postBaseModelReqByJson(@Valid @RequestBody BaseModelReq req) {
+        return new BaseModelRsp();
     }
 
     @ApiOperation("测试全局验证多条验证 异常捕获")
-    @RequestMapping(value = "/postPagingReq",method = RequestMethod.POST)
+    @RequestMapping(value = "/postPagingReq", method = RequestMethod.POST)
     @ResponseBody
-    public BaseModelRsp postPagingReq(@Valid @RequestBody PagingReq req){
+    public BaseModelRsp postPagingReq(@Valid @RequestBody PagingReq req) {
         return new BaseModelRsp();
     }
 
     @ApiOperation("测试全局验证RequestParam 异常捕获")
-    @RequestMapping(value = "/postBaseModelReq",method = RequestMethod.POST)
+    @RequestMapping(value = "/postBaseModelReq", method = RequestMethod.POST)
     @ResponseBody
-    public BaseModelRsp postBaseModelReq(@Valid BaseModelReq req){
-        return  new BaseModelRsp();
+    public BaseModelRsp postBaseModelReq(@Valid BaseModelReq req) {
+        return new BaseModelRsp();
     }
 
     @ApiOperation("测试全局验证getMapping 异常捕获")
     @GetMapping(value = "/get")
     @ResponseBody
-    public BaseModelRsp getBaseModelReq(@Valid BaseModelReq req){
-        return  new BaseModelRsp();
+    public BaseModelRsp getBaseModelReq(@Valid BaseModelReq req) {
+        return new BaseModelRsp();
     }
 
 }

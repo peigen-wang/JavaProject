@@ -25,16 +25,16 @@ public class UserTest {
     }
 
     @Test
-    public void getById(){
-        try(SqlSession sqlSession= sqlSessionFactory.openSession(true)){
-            UserMapper userMapper =sqlSession.getMapper(UserMapper.class);
+    public void getById() {
+        try (SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
+            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
             UserModel userModel = userMapper.getById(6L);
-            log.info("{}",userModel);
+            log.info("{}", userModel);
         }
     }
 
     @Test
-    public void getById1(){
+    public void getById1() {
         try (SqlSession sqlSession = this.sqlSessionFactory.openSession(true);) {
             NewsTypeMapper mapper = sqlSession.getMapper(NewsTypeMapper.class);
             NewsTypeModel newsTypeModel = mapper.getById(2);
@@ -44,7 +44,7 @@ public class UserTest {
 
 
     @Test
-    public void getById2(){
+    public void getById2() {
         try (SqlSession sqlSession = this.sqlSessionFactory.openSession(true);) {
             NewsTypeMapper mapper = sqlSession.getMapper(NewsTypeMapper.class);
             NewsTypeModel newsTypeModel = mapper.getById2(3);

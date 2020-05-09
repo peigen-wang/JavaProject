@@ -8,7 +8,7 @@ import java.io.IOException;
 /**
  * @author peigen
  */
-@WebFilter(filterName = "MyFirstFilter",urlPatterns = "/MyFirstFilter")
+@WebFilter(filterName = "MyFirstFilter", urlPatterns = "/MyFirstFilter")
 public class MyFirstFilter implements Filter {
     @Override
     public void destroy() {
@@ -21,7 +21,7 @@ public class MyFirstFilter implements Filter {
         count++;
         HttpServletRequest request = (HttpServletRequest) req;
         ServletContext context = request.getSession().getServletContext();
-        context.setAttribute("count",count);
+        context.setAttribute("count", count);
         chain.doFilter(req, resp);
     }
 

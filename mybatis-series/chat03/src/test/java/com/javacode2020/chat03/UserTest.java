@@ -35,9 +35,9 @@ public class UserTest {
     }
 
     @Test
-    public void updateUser(){
+    public void updateUser() {
         try (SqlSession sqlSession = this.sqlSessionFactory.openSession(true)) {
-            UserMapper mapper =sqlSession.getMapper(UserMapper.class);
+            UserMapper mapper = sqlSession.getMapper(UserMapper.class);
             UserModel userModel = UserModel.builder().id(114L).name("培1根").age(31).build();
             //执行更新操作
             long result = mapper.updateUser(userModel);
@@ -54,7 +54,7 @@ public class UserTest {
             //执行删除操作
             boolean result = mapper.deleteUser(userId);
             log.info("第1次删除:id={},返回值:{}", userId, result);
-            userId=101L;
+            userId = 101L;
             result = mapper.deleteUser(userId);
             log.info("第2次删除:id={},返回值:{}", userId, result);
         }

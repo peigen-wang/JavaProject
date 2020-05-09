@@ -5,7 +5,7 @@ import com.commom.validation.PhoneAnnotation;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-public class Phone implements ConstraintValidator<PhoneAnnotation,String> {
+public class Phone implements ConstraintValidator<PhoneAnnotation, String> {
 
     @Override
     public void initialize(PhoneAnnotation constraintAnnotation) {

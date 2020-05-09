@@ -14,7 +14,7 @@ import java.io.PrintWriter;
  * @author peigen
  */
 
-@WebServlet(name = "AddServlet",urlPatterns = "/AddServlet")
+@WebServlet(name = "AddServlet", urlPatterns = "/AddServlet")
 
 public class AddServlet extends HttpServlet {
     @Override

@@ -8,10 +8,10 @@ import java.util.List;
 public class PagingRsp<T> extends BaseModelRsp {
 
 
-    public PagingRsp(MethodResultBase methodResultBase){
+    public PagingRsp(MethodResultBase methodResultBase) {
         super(methodResultBase);
         PagingResult<T> pagingResult = (PagingResult<T>) methodResultBase;
-        if(pagingResult!=null){
+        if (pagingResult != null) {
             setData(pagingResult.getData());
             setPageIndex(pagingResult.getPageIndex());
             setPageSize(pagingResult.getPageSize());

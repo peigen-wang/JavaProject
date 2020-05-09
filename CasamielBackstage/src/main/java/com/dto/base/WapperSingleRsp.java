@@ -10,7 +10,7 @@ public class WapperSingleRsp<T> extends BaseModelRsp {
 
     }
 
-    public WapperSingleRsp(MethodResultBase methodResultBase){
+    public WapperSingleRsp(MethodResultBase methodResultBase) {
         super(methodResultBase);
     }
 

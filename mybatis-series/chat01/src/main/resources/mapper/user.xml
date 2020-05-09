@@ -4,7 +4,8 @@
 <mapper namespace="com.javacode2020.mybatis.chat01.UserMapper">
 
     <!-- 插入 -->
-    <insert id="insert" parameterType="com.javacode2020.mybatis.chat01.UserModel" keyProperty="id" useGeneratedKeys="true">
+    <insert id="insert" parameterType="com.javacode2020.mybatis.chat01.UserModel" keyProperty="id"
+            useGeneratedKeys="true">
         <![CDATA[ INSERT INTO `user` ]]>
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id!=null">

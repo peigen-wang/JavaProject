@@ -11,6 +11,6 @@
     <title>第一个</title>
 </head>
 <body>
-    第一个Struts2程序！<br>
+第一个Struts2程序！<br>
 </body>
 </html>

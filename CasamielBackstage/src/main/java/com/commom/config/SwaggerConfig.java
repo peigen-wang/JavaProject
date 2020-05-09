@@ -32,13 +32,14 @@ public class SwaggerConfig extends WebMvcConfigurationSupport {
                 .apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
                 .build();
     }
+
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title("CasamielBackageApi")
                 .description("可莎官网Java版本接口文档")
                 //服务条款URL
                 .termsOfServiceUrl("http://localhost:8082/")
-                .contact(new Contact("培根","https://www.cnblogs.com/peigen/","peigen.wang@qq.com"))
+                .contact(new Contact("培根", "https://www.cnblogs.com/peigen/", "peigen.wang@qq.com"))
                 .version("1.0.0")
                 .build();
     }

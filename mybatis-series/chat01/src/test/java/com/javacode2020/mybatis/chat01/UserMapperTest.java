@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import java.util.*;
 import java.util.stream.Collectors;
+
 @Slf4j
 public class UserMapperTest {
 
@@ -18,9 +19,9 @@ public class UserMapperTest {
         });
 
         Map<String, Object> map = new HashMap<>();
-        map.put("id",10);
-        UserModel u=  UserUtil.callMapper(UserMapper.class,mapper->{
-            List<UserModel> userModelList=  mapper.getModelList(map);
+        map.put("id", 10);
+        UserModel u = UserUtil.callMapper(UserMapper.class, mapper -> {
+            List<UserModel> userModelList = mapper.getModelList(map);
             return userModelList.get(0);
         });
         log.info("结果:{}", u);

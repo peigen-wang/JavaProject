@@ -9,12 +9,13 @@ public class EnumUtil {
 
     /**
      * 根据反射，通过方法名称获取方法值，忽略大小写的
+     *
      * @param methodName
      * @param obj
      * @param args
      * @return return value
      */
-    private static <T> Object getMethodValue(String methodName, T obj,Object... args) {
+    private static <T> Object getMethodValue(String methodName, T obj, Object... args) {
         Object resut = "";
         try {
             Method[] methods = obj.getClass().getMethods();
@@ -45,12 +46,13 @@ public class EnumUtil {
 
     /**
      * 通过value值获取对应的描述信息
+     *
      * @param value
      * @param enumT
      * @param methodNames
      * @return enum description
      */
-    public static <T> Object getEnumDescriotionByValue(Object value,Class<T> enumT, String... methodNames) {
+    public static <T> Object getEnumDescriotionByValue(Object value, Class<T> enumT, String... methodNames) {
         if (!enumT.isEnum()) {
             return "";
         }
@@ -84,12 +86,13 @@ public class EnumUtil {
 
     /**
      * 通过枚举value或者自定义值及方法获取枚举属性值
+     *
      * @param value
      * @param enumT
      * @param methodNames
      * @return enum key
      */
-    public static <T> String getEnumKeyByValue(Object value, Class<T> enumT,String... methodNames) {
+    public static <T> String getEnumKeyByValue(Object value, Class<T> enumT, String... methodNames) {
         if (!enumT.isEnum()) {
             return "";
         }
@@ -119,6 +122,7 @@ public class EnumUtil {
 
     /**
      * 枚举转map结合value作为map的key,description作为map的value
+     *
      * @param enumT
      * @param methodNames
      * @return enum mapcolloction

@@ -6,13 +6,12 @@ package com.commom.emun;
 
 public enum ErrorCodeEnum {
 
-    Success(0,"success"),
-    ParamEmpty(100,"必选参数为空"),
-    ParamError(101,"参数格式错误"),
-    FrameError(300,"框架级别错误"),
-    SystemError(400,"系统级别错误"),
-    UnKnownError(999,"未知错误");
-
+    Success(0, "success"),
+    ParamEmpty(100, "必选参数为空"),
+    ParamError(101, "参数格式错误"),
+    FrameError(300, "框架级别错误"),
+    SystemError(400, "系统级别错误"),
+    UnKnownError(999, "未知错误");
 
 
     ErrorCodeEnum(int code, String des) {

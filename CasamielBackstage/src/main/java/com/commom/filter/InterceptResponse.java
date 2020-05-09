@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
 import javax.servlet.http.HttpServletRequest;
+
 @ControllerAdvice
 public class InterceptResponse implements ResponseBodyAdvice<Object> {
     @Override

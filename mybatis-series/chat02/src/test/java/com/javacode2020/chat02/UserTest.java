@@ -29,32 +29,32 @@ public class UserTest {
         String resource = "mybatis-config.xml";
         InputStream inputStream = Resources.getResourceAsStream(resource);
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
-        this.sqlSessionFactory =sqlSessionFactory;
+        this.sqlSessionFactory = sqlSessionFactory;
     }
 
     @Test
-    public  void  SqlSession(){
+    public void SqlSession() {
         SqlSession sqlSession = this.sqlSessionFactory.openSession();
-        log.info("{}",sqlSession);
+        log.info("{}", sqlSession);
     }
 
     @Test
-    public void insertUser(){
-        try(SqlSession sqlSession = this.sqlSessionFactory.openSession(true)) {
+    public void insertUser() {
+        try (SqlSession sqlSession = this.sqlSessionFactory.openSession(true)) {
             UserModel userModel = UserModel.builder().name("peigen").salary(1000D).age(30).build();
-            int result = sqlSession.insert("com.javacode2020.chat02.UserMapper.insertUser",userModel);
-            log.info("插入影响行数：{}",result);
+            int result = sqlSession.insert("com.javacode2020.chat02.UserMapper.insertUser", userModel);
+            log.info("插入影响行数：{}", result);
             sqlSession.commit();
         }
     }
 
     @Test
-    public  void  insertWithMapper(){
-        try(SqlSession sqlSession = this.sqlSessionFactory.openSession(true)){
+    public void insertWithMapper() {
+        try (SqlSession sqlSession = this.sqlSessionFactory.openSession(true)) {
             UserModel userModel = UserModel.builder().name("peigen").salary(1000D).age(30).build();
             UserMapper mapper = sqlSession.getMapper(UserMapper.class);
             int result = mapper.insertUser(userModel);
-            log.info("插入影响行数：{}",result);
+            log.info("插入影响行数：{}", result);
             //sqlSession.commit();
         }
     }
@@ -75,7 +75,7 @@ public class UserTest {
      * 实体值
      */
     @Test
-    public void getListByUserFindDto(){
+    public void getListByUserFindDto() {
         try (SqlSession sqlSession = this.sqlSessionFactory.openSession(true);) {
             UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
             UserFindDto userFindDto = UserFindDto.builder().userId(20L).userName("peigen").build();
@@ -90,10 +90,10 @@ public class UserTest {
      * 多个自定义参数
      */
     @Test
-    public void getByIdOrName(){
-        try (SqlSession sqlSession = this.sqlSessionFactory.openSession(true);){
+    public void getByIdOrName() {
+        try (SqlSession sqlSession = this.sqlSessionFactory.openSession(true);) {
             UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
-            UserModel userModel = userMapper.getByIdOrName(20L,"peigen");
+            UserModel userModel = userMapper.getByIdOrName(20L, "peigen");
             log.info("{}", userModel);
         }
     }
@@ -102,13 +102,13 @@ public class UserTest {
      * ResultHandler 处理
      */
     @Test
-    public void  getList() {
-        try (SqlSession sqlSession = this.sqlSessionFactory.openSession(true);){
+    public void getList() {
+        try (SqlSession sqlSession = this.sqlSessionFactory.openSession(true);) {
             UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
             userMapper.getList(resultContext -> {
-                DefaultResultContext<UserModel> defaultResultContext = ( DefaultResultContext<UserModel>)resultContext;
+                DefaultResultContext<UserModel> defaultResultContext = (DefaultResultContext<UserModel>) resultContext;
                 log.info("{}", defaultResultContext.getResultObject());
-                if(defaultResultContext.getResultCount()==10){
+                if (defaultResultContext.getResultCount() == 10) {
                     defaultResultContext.stop();
                 }
             });
@@ -116,10 +116,10 @@ public class UserTest {
     }
 
     @Test
-    public void getListByIds(){
-        try (SqlSession sqlSession = this.sqlSessionFactory.openSession(true)){
+    public void getListByIds() {
+        try (SqlSession sqlSession = this.sqlSessionFactory.openSession(true)) {
             UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
-            List<Long> ids = Arrays.asList(1L, 3L,10L,20L,21L);
+            List<Long> ids = Arrays.asList(1L, 3L, 10L, 20L, 21L);
             List<UserModel> userModelList = userMapper.getListByIds(ids);
             userModelList.forEach(item -> {
                 log.info("{}", item);

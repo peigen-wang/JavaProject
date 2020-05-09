@@ -19,6 +19,7 @@ public class WebUtil {
 
     /**
      * 获取 text/html 请求参数
+     *
      * @param request
      * @return
      */
@@ -33,6 +34,7 @@ public class WebUtil {
 
     /**
      * 获取 application/json 参数
+     *
      * @param request
      * @return
      */
@@ -60,25 +62,24 @@ public class WebUtil {
         return body;
     }
 
-    public static String readPostJsonData(HttpServletResponse response) throws IOException
-    {
-        String result="";
-        if (response instanceof ContentCachingResponseWrapper){
+    public static String readPostJsonData(HttpServletResponse response) throws IOException {
+        String result = "";
+        if (response instanceof ContentCachingResponseWrapper) {
             ContentCachingResponseWrapper responseWrapper = (ContentCachingResponseWrapper) response;
             int contentSize = ((ContentCachingResponseWrapper) response).getContentSize();
             if (contentSize > 0) {
                 byte[] bytes = new byte[contentSize];
                 InputStream is = responseWrapper.getContentInputStream();
-                for (int i = 0; i < contentSize; i++){
+                for (int i = 0; i < contentSize; i++) {
                     int value = is.read();
-                    if (value == -1){
+                    if (value == -1) {
                         //is.reset();
                         break;
                     }
                     bytes[i] = (byte) value;
                 }
                 responseWrapper.getContentAsByteArray();//这里是为了测试
-                result= new String(bytes);
+                result = new String(bytes);
             }
         }
         return result;
@@ -88,7 +89,7 @@ public class WebUtil {
      * 将ErrorStack转化为String.
      */
     public static String getStackTraceAsString(Throwable e) {
-        if (e == null){
+        if (e == null) {
             return "";
         }
         StringWriter stringWriter = new StringWriter();
