@@ -2,10 +2,12 @@ package com.casamiel.backstage.controller;
 
 
 
+import com.casamiel.backstage.commom.MethodResultFull;
 import com.casamiel.backstage.dto.base.BaseModelReq;
 import com.casamiel.backstage.dto.base.BaseModelRsp;
 import com.casamiel.backstage.dto.base.PagingReq;
 import com.casamiel.backstage.dto.base.WapperSingleRsp;
+import com.casamiel.backstage.dto.rsp.MemberToken;
 import com.casamiel.backstage.entity.Member;
 import com.casamiel.backstage.service.MemberService;
 import io.swagger.annotations.Api;
@@ -41,6 +43,18 @@ public class MemberController {
         rsp.setData(result);
         return rsp;
     }
+
+
+    @ApiOperation(value = "联表查询测试")
+    @PostMapping(value = "/getmtokeById")
+    public WapperSingleRsp<MemberToken> getmtokeById(int id){
+        MethodResultFull<MemberToken> result = memberService.getmtokenById(id);
+        WapperSingleRsp<MemberToken> rsp = new WapperSingleRsp<>(result);
+        rsp.setData(result.getContent());
+        return rsp;
+    }
+
+
 
     @ApiOperation("测试全局验证多条验证 异常捕获")
     @RequestMapping(value = "/postPagingReq", method = RequestMethod.POST)

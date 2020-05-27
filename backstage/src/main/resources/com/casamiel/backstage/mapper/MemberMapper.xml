@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.casamiel.backstage.mapper.MemberMapper">
+
+    <resultMap id="MemberTokenMap" type="com.casamiel.backstage.dto.rsp.MemberToken">
+        <id column="memberId" property="memberId"></id>
+        <result column="userName" property="userName"></result>
+        <result column="realName" property="realName"></result>
+        <collection property="tokenList" javaType="java.util.List" ofType="java.lang.String">
+           <constructor>
+               <arg column="token"></arg>
+           </constructor>
+        </collection>
+    </resultMap>
+    <select id="GetMTokenById" resultMap="MemberTokenMap">
+        select a.memberId,a.userName,a.realName,b.token from member as a
+        left join token as b on a.memberId = b.memberId where a.memberId=#{id}
+    </select>
+</mapper>

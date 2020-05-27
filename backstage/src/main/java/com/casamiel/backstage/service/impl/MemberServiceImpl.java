@@ -1,5 +1,8 @@
 package com.casamiel.backstage.service.impl;
 
+import com.casamiel.backstage.commom.MethodResultFull;
+import com.casamiel.backstage.commom.emun.ErrorCodeEnum;
+import com.casamiel.backstage.dto.rsp.MemberToken;
 import com.casamiel.backstage.entity.Member;
 import com.casamiel.backstage.mapper.MemberMapper;
 import com.casamiel.backstage.service.MemberService;
@@ -17,4 +20,16 @@ import org.springframework.stereotype.Service;
 @Service
 public class MemberServiceImpl extends ServiceImpl<MemberMapper, Member> implements MemberService {
 
+
+    @Override
+    public MethodResultFull<MemberToken> getmtokenById(int id) {
+        MemberToken memberToken = baseMapper.GetMTokenById(id);
+        if(memberToken==null)
+        {
+            return new MethodResultFull<>(ErrorCodeEnum.FrameError);
+        }
+        MethodResultFull<MemberToken> result = new MethodResultFull<MemberToken>();
+        result.setContent(memberToken);
+        return result;
+    }
 }

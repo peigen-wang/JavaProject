@@ -1,5 +1,7 @@
 package com.casamiel.backstage.service;
 
+import com.casamiel.backstage.commom.MethodResultFull;
+import com.casamiel.backstage.dto.rsp.MemberToken;
 import com.casamiel.backstage.entity.Member;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -13,4 +15,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface MemberService extends IService<Member> {
 
+    MethodResultFull<MemberToken> getmtokenById(int id);
 }
