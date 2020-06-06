@@ -3,6 +3,7 @@ package com.casamiel.backstage.controller;
 
 
 import com.casamiel.backstage.commom.MethodResultFull;
+import com.casamiel.backstage.commom.emun.ErrorCodeEnum;
 import com.casamiel.backstage.dto.base.BaseModelReq;
 import com.casamiel.backstage.dto.base.BaseModelRsp;
 import com.casamiel.backstage.dto.base.PagingReq;
@@ -60,7 +61,7 @@ public class MemberController {
     @RequestMapping(value = "/postPagingReq", method = RequestMethod.POST)
     @ResponseBody
     public BaseModelRsp postPagingReq(@Valid @RequestBody PagingReq req) {
-        return new BaseModelRsp();
+        return new BaseModelRsp(ErrorCodeEnum.ParamEmpty,"手机号不能为空");
     }
 
     @ApiOperation(value = "异常测试")
