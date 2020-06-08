@@ -2,6 +2,7 @@ package com.casamiel.backstage.commom.filter;
 
 
 import com.google.gson.Gson;
+import lombok.extern.log4j.Log4j2;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
@@ -19,9 +20,8 @@ import javax.servlet.http.HttpServletRequest;
 @Aspect
 @Component
 @Order(5)
-
+@Log4j2
 public class LogAspect {
-    private final static Logger logger = LoggerFactory.getLogger(LogAspect.class);
     private ThreadLocal<Long> startTime=new ThreadLocal<>();
 
     @Pointcut("execution(public * com.casamiel.backstage.controller..*.*(..))")
@@ -41,17 +41,17 @@ public class LogAspect {
         HttpServletRequest request = attributes.getRequest();
 
         // 打印请求相关参数
-        logger.info("========================================== Start ==========================================");
+        log.info("========================================== Start ==========================================");
         // 打印请求 url
-        logger.info("URL            : {}", request.getRequestURL().toString());
+        log.info("URL            : {}", request.getRequestURL().toString());
         // 打印 Http method
-        logger.info("HTTP Method    : {}", request.getMethod());
+        log.info("HTTP Method    : {}", request.getMethod());
         // 打印调用 controller 的全路径以及执行方法
-        logger.info("Class Method   : {}.{}", joinPoint.getSignature().getDeclaringTypeName(), joinPoint.getSignature().getName());
+        log.info("Class Method   : {}.{}", joinPoint.getSignature().getDeclaringTypeName(), joinPoint.getSignature().getName());
         // 打印请求的 IP
-        logger.info("IP             : {}", request.getRemoteAddr());
+        log.info("IP             : {}", request.getRemoteAddr());
         // 打印请求入参
-        logger.info("Request Args   : {}", new Gson().toJson(joinPoint.getArgs()));
+        log.info("Request Args   : {}", new Gson().toJson(joinPoint.getArgs()));
     }
 
     /**
@@ -60,9 +60,9 @@ public class LogAspect {
      */
     @After("LogAspect()")
     public void doAfter() throws Throwable {
-        logger.info("=========================================== End ===========================================");
+        log.info("=========================================== End ===========================================");
         // 每个请求之间空一行
-        logger.info("");
+        log.info("");
     }
 
     /**
@@ -76,9 +76,9 @@ public class LogAspect {
         long startTime = System.currentTimeMillis();
         Object result = proceedingJoinPoint.proceed();
         // 打印出参
-        logger.info("Response Args  : {}", new Gson().toJson(result));
+        log.info("Response Args  : {}", new Gson().toJson(result));
         // 执行耗时
-        logger.info("Time-Consuming : {} ms", System.currentTimeMillis() - startTime);
+        log.info("Time-Consuming : {} ms", System.currentTimeMillis() - startTime);
         return result;
     }
 }
